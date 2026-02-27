@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "dce4a5ac-18b1-4a26-97a9-92d74a43d5c4",
+    "name": "Service Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "insightdelivered"
+  },
+  "item": [
+    {
+      "name": "Service Type",
+      "item": [
+        {
+          "name": "Create Service Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_type_name\": \"Engine Service\",\n  \"description\": \"General engine maintenance service\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/service/type/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "type", "create"]
+            }
+          }
+        },
+        {
+          "name": "Update Service Type",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_type_id\": 1,\n  \"service_type_name\": \"Updated Engine Service\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/service/type/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "type", "update"]
+            }
+          }
+        },
+        {
+          "name": "Get Service Type by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/service/type/get/id?service_type_id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "type", "get", "id"],
+              "query": [
+                { "key": "service_type_id", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Service Types",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/service/type/getall",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "type", "getall"]
+            }
+          }
+        },
+        {
+          "name": "Delete Service Type",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/api/service/type/delete/id?service_type_id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "type", "delete", "id"],
+              "query": [
+                { "key": "service_type_id", "value": "1" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Service Detail",
+      "item": [
+        {
+          "name": "Create Service Detail",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_type_id\": 1,\n  \"service_detail\": \"Oil Filter Replacement\",\n  \"price\": 500,\n  \"duration\": \"30 mins\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/service/detail/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "detail", "create"]
+            }
+          }
+        },
+        {
+          "name": "Update Service Detail",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_detail_id\": 1,\n  \"service_detail\": \"Updated Oil Filter Replacement\",\n  \"price\": 600,\n  \"duration\": \"40 mins\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/service/detail/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "detail", "update"]
+            }
+          }
+        },
+        {
+          "name": "Get Service Detail by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/service/detail/get/id?service_detail_id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "detail", "get", "id"],
+              "query": [
+                { "key": "service_detail_id", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Service Details by Type ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/service/detail/getbytype?service_type_id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "detail", "getbytype"],
+              "query": [
+                { "key": "service_type_id", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Service Detail",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/api/service/detail/delete/id?service_detail_id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "service", "detail", "delete", "id"],
+              "query": [
+                { "key": "service_detail_id", "value": "1" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

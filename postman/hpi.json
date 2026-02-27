@@ -1,0 +1,249 @@
+{
+  "info": {
+    "_postman_id": "f2d6f40d-8b86-4cca-9a7c-c1a75f5ce1e4",
+    "name": "QSFV3 HPI API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Contains primaryProducts', function () {",
+              "    const body = pm.response.json();",
+              "    pm.expect(body).to.have.property('primaryProducts');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enquiry - Standard",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"environment\": \"test\",\n  \"version\": \"V1\",\n  \"enquiryType\": \"standard\",\n  \"credentials\": {\n    \"customerCode\": \"{{hpiCustomerCode}}\",\n    \"initials\": \"{{hpiInitials}}\",\n    \"password\": \"{{hpiPassword}}\"\n  },\n  \"vrm\": \"{{vrm}}\",\n  \"vin\": \"\",\n  \"mileage\": \"0\",\n  \"reference\": \"POSTMAN001\",\n  \"primaryProduct\": \"HPI64\",\n  \"supplementaryProducts\": []\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/enquiry",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "enquiry"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Has success or error field', function () {",
+              "    const body = pm.response.json();",
+              "    pm.expect(body).to.have.property('success');",
+              "    pm.expect(body).to.have.property('summary');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enquiry - Parameterized (NMR Example)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"environment\": \"test\",\n  \"version\": \"V1\",\n  \"enquiryType\": \"parameterized\",\n  \"credentials\": {\n    \"customerCode\": \"{{hpiCustomerCode}}\",\n    \"initials\": \"{{hpiInitials}}\",\n    \"password\": \"{{hpiPassword}}\"\n  },\n  \"vrm\": \"{{vrm}}\",\n  \"mileage\": \"0\",\n  \"reference\": \"POSTMAN001\",\n  \"primaryProduct\": \"HPI63\",\n  \"supplementaryProducts\": [\"HP001\"],\n  \"parameters\": {\n    \"NMR_ODOMETER_READING\": \"50000\",\n    \"NMR_ODOMETER_UNITS\": \"M\",\n    \"NMR_ODOMETER_CHANGED\": \"N\",\n    \"NMR_ODOMETER_READING_DATE\": \"26/02/2026\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/enquiry",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "enquiry"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Response has summary', function () {",
+              "    const body = pm.response.json();",
+              "    pm.expect(body).to.have.property('summary');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Legacy Check",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"regno\": \"{{vrm}}\",\n  \"initials\": \"{{hpiInitials}}\",\n  \"mileage\": 50000,\n  \"reference\": \"POSTMAN-LEGACY\",\n  \"product\": \"HPI64\",\n  \"customerCode\": \"{{hpiCustomerCode}}\",\n  \"password\": \"{{hpiPassword}}\",\n  \"version\": \"V1\",\n  \"environment\": \"test\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/check",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "check"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Decode PDF",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"filename\": \"hpi-document.pdf\",\n  \"base64Data\": \"JVBERi0xLjQKJcTl8uXr...\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/decode-pdf",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "decode-pdf"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Login Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/login/test",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "login",
+            "test"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:1044/dev/v1/hpi"
+    },
+    {
+      "key": "hpiCustomerCode",
+      "value": ""
+    },
+    {
+      "key": "hpiInitials",
+      "value": ""
+    },
+    {
+      "key": "hpiPassword",
+      "value": ""
+    },
+    {
+      "key": "vrm",
+      "value": "AB12CDE"
+    }
+  ]
+}

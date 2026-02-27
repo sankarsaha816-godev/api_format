@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "Stocks & Sales API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Endpoints for Stocks & Sales"
+  },
+  "item": [
+    {
+      "name": "Stocks",
+      "item": [
+        {
+          "name": "Create Stock",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock_number\": \"STK-001\",\n  \"registration\": \"TN09AB1234\",\n  \"sale_date\": \"2025-10-09\",\n  \"sales_inv_no\": \"INV1001\",\n  \"sale_type\": \"Retail\",\n  \"sold_price\": \"20000\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"address_line1\": \"123 Street\",\n  \"address_line2\": \"Apt 4B\",\n  \"city\": \"Chennai\",\n  \"country\": \"India\",\n  \"post_code\": \"600001\",\n  \"remarks\": \"Delivered\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/stocks",
+              "host": ["{{base_url}}"],
+              "path": ["stocks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Stocks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/stocks",
+              "host": ["{{base_url}}"],
+              "path": ["stocks"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Stock by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/stocks/:id",
+              "host": ["{{base_url}}"],
+              "path": ["stocks", ":id"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Stock",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sold_price\": \"21000\",\n  \"remarks\": \"Updated remark\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/stocks/:id",
+              "host": ["{{base_url}}"],
+              "path": ["stocks", ":id"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Stock",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/stocks/:id",
+              "host": ["{{base_url}}"],
+              "path": ["stocks", ":id"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "item": [
+        {
+          "name": "Create Sale",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock_number\": \"STK-002\",\n  \"registration\": \"TN09AB1235\",\n  \"sale_date\": \"2025-10-10\",\n  \"sales_inv_no\": \"INV1002\",\n  \"sale_type\": \"Wholesale\",\n  \"sold_price\": \"30000\",\n  \"first_name\": \"Alice\",\n  \"last_name\": \"Smith\",\n  \"address_line1\": \"456 Road\",\n  \"address_line2\": \"\",\n  \"city\": \"Madurai\",\n  \"country\": \"India\",\n  \"post_code\": \"625001\",\n  \"remarks\": \"To be delivered\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sales",
+              "host": ["{{base_url}}"],
+              "path": ["sales"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Sales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/sales",
+              "host": ["{{base_url}}"],
+              "path": ["sales"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Sale by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/sales/:id",
+              "host": ["{{base_url}}"],
+              "path": ["sales", ":id"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Sale",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sold_price\": \"31000\",\n  \"remarks\": \"Updated for sale\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sales/:id",
+              "host": ["{{base_url}}"],
+              "path": ["sales", ":id"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Sale",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/sales/:id",
+              "host": ["{{base_url}}"],
+              "path": ["sales", ":id"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

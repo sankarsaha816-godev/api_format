@@ -1,0 +1,48 @@
+{
+  "info": {
+    "name": "DVLA Vehicle Enquiry",
+    "_postman_id": "f2bdb5a6-93e0-4c8c-b4f4-2d5a7e58d9e8",
+    "description": "Postman collection for DVLA Vehicle Enquiry API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Vehicle Details",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "Dmh2UTsM483s1EqJ1lh8ia0ixyfYPvhx5hJ40fn1",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"registrationNumber\": \"TE57VRN\"\n}"
+        },
+        "url": {
+          "raw": "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
+          "protocol": "https",
+          "host": [
+            "driver-vehicle-licensing",
+            "api",
+            "gov",
+            "uk"
+          ],
+          "path": [
+            "vehicle-enquiry",
+            "v1",
+            "vehicles"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

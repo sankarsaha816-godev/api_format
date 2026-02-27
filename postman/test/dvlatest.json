@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "DVLA Vehicle Enquiry API",
+    "_postman_id": "8f0edc4c-7c8a-4ef5-9f2b-dvla12345",
+    "description": "Postman collection for DVLA Vehicle Enquiry API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Vehicle Lookup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Api-Key",
+            "value": "Dmh2UTsM483s1EqJ1lh8ia0ixyfYPvhx5hJ40fn1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"registrationNumber\": \"W4LLH\"\n}"
+        },
+        "url": {
+          "raw": "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles",
+          "protocol": "https",
+          "host": [
+            "driver-vehicle-licensing",
+            "api",
+            "gov",
+            "uk"
+          ],
+          "path": [
+            "vehicle-enquiry",
+            "v1",
+            "vehicles"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

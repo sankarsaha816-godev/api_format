@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "Bay FRT Actual vs Assigned",
+    "_postman_id": "c2f4e9f0-92f7-4f4a-bdf8-45a0d10b2e62",
+    "description": "APIs for EM/SL and GR/WA Bay FRT Actual vs Assigned reports",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get EM/SL Bay FRT Actual vs Assigned",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.insightdelivered.com/auto/v1/bay/frt/emsl?from=01-11-2025&to=30-11-2025",
+          "protocol": "https",
+          "host": [
+            "api",
+            "insightdelivered",
+            "com"
+          ],
+          "path": [
+            "auto",
+            "v1",
+            "bay",
+            "frt",
+            "emsl"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "01-11-2025"
+            },
+            {
+              "key": "to",
+              "value": "30-11-2025"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get GR/WA Bay FRT Actual vs Assigned",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.insightdelivered.com/auto/v1/bay/frt/grwa?from=01-11-2025&to=30-11-2025",
+          "protocol": "https",
+          "host": [
+            "api",
+            "insightdelivered",
+            "com"
+          ],
+          "path": [
+            "auto",
+            "v1",
+            "bay",
+            "frt",
+            "grwa"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "01-11-2025"
+            },
+            {
+              "key": "to",
+              "value": "30-11-2025"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

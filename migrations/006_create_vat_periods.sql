@@ -1,0 +1,26 @@
+-- Create vat_periods table (MTD return output)
+CREATE TABLE IF NOT EXISTS `vat_periods` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `tenant_info_id` BIGINT NOT NULL,
+  `period_key` VARCHAR(50) NOT NULL COMMENT 'HMRC period code e.g., 23A1',
+  `start_date` DATE NOT NULL,
+  `end_date` DATE NOT NULL,
+  `box1` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'VAT due on sales',
+  `box2` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'VAT due on EC acquisitions',
+  `box3` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'Total VAT due (box1+box2)',
+  `box4` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'VAT reclaimed',
+  `box5` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'Net VAT due (box3-box4)',
+  `box6` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'Total sales ex VAT',
+  `box7` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'Total purchases ex VAT',
+  `box8` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'EC supplies ex VAT',
+  `box9` DECIMAL(15,2) NOT NULL DEFAULT 0 COMMENT 'EC acquisitions ex VAT',
+  `finalised` BOOLEAN DEFAULT FALSE,
+  `submitted_to_hmrc` BOOLEAN DEFAULT FALSE,
+  `submission_date` DATETIME,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `uq_tenant_period` (`tenant_info_id`,`period_key`),
+  KEY `idx_tenant_info_id` (`tenant_info_id`),
+  KEY `idx_start_date` (`start_date`),
+  CONSTRAINT `fk_vat_periods_tenant` FOREIGN KEY (`tenant_info_id`) REFERENCES `tenant_infos` (`tenant_info_id`) ON DELETE CASCADE
+);

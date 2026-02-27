@@ -1,0 +1,70 @@
+{
+  "info": {
+    "name": "Sales Invoice Image Upload APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "sales-invoice-upload-collection"
+  },
+  "item": [
+    {
+      "name": "Upload Sales Invoice Images",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/sales/upload-invoice-images?tenantname=Tenant1&invoiceid=101",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["sales", "upload-invoice-images"],
+          "query": [
+            { "key": "tenantname", "value": "Tenant1" },
+            { "key": "invoiceid", "value": "101" }
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "images",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    },
+
+    {
+      "name": "Get Invoice Images by Invoice ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/sales/invoice-images?invoiceid=101",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["sales", "invoice-images"],
+          "query": [
+            { "key": "invoiceid", "value": "101" }
+          ]
+        }
+      }
+    },
+
+    {
+      "name": "Get All Invoice Images by Tenant",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/sales/tenant-invoice-images?tenantname=Tenant1",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["sales", "tenant-invoice-images"],
+          "query": [
+            { "key": "tenantname", "value": "Tenant1" }
+          ]
+        }
+      }
+    }
+  ]
+}

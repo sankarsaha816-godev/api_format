@@ -1,0 +1,165 @@
+{
+  "info": {
+    "name": "Tenant Management APIs (Fiber + JWT + OTP)",
+    "_postman_id": "tenant-jwt-otp-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1️⃣ Send OTP",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/send-otp",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "send-otp"]
+        }
+      }
+    },
+    {
+      "name": "2️⃣ Verify OTP & Login (Get JWT)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"otp\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/verify-otp",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "verify-otp"]
+        }
+      }
+    },
+    {
+      "name": "3️⃣ Tenant Info - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tenant_name\": \"Tenant A\",\n  \"tenant_contactno\": \"9876543210\",\n  \"tenant_token\": \"abc123\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/tenant/info/create",
+          "host": ["{{base_url}}"],
+          "path": ["tenant", "info", "create"]
+        }
+      }
+    },
+    {
+      "name": "4️⃣ Tenant Info - Get All",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/tenant/info/getall",
+          "host": ["{{base_url}}"],
+          "path": ["tenant", "info", "getall"]
+        }
+      }
+    },
+    {
+      "name": "5️⃣ Tenant Info - Get By ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/tenant/info/get/id?tenant_info_id=1",
+          "host": ["{{base_url}}"],
+          "path": ["tenant", "info", "get", "id"],
+          "query": [{ "key": "tenant_info_id", "value": "1" }]
+        }
+      }
+    },
+    {
+      "name": "6️⃣ Tenant Info - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tenant_info_id\": 1,\n  \"tenant_name\": \"Updated Tenant A\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/tenant/info/update",
+          "host": ["{{base_url}}"],
+          "path": ["tenant", "info", "update"]
+        }
+      }
+    },
+    {
+      "name": "7️⃣ Tenant Info - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{jwt_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/tenant/info/delete/id?tenant_info_id=1",
+          "host": ["{{base_url}}"],
+          "path": ["tenant", "info", "delete", "id"],
+          "query": [{ "key": "tenant_info_id", "value": "1" }]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "localhost:1044/autoprod/v1/"
+    },
+    {
+      "key": "jwt_token",
+      "value": ""
+    }
+  ]
+}

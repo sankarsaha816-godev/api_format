@@ -1,0 +1,118 @@
+{
+  "info": {
+    "name": "Sales Invoice API Collection",
+    "_postman_id": "d3d15c03-18ab-4e9f-9fc2-c1e7c3d9a31c",
+    "description": "CRUD APIs for SalesInvoiceHeader and SalesInvoiceDetails",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sales Invoice Header",
+      "item": [
+        {
+          "name": "Create Sales Invoice (Header + Details)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "localhost:1111/dev/v1/salesinvoice/headers/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "salesinvoice", "create"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": 1,\n  \"branch_name\": \"Chennai\",\n  \"customer_name\": \"Ramesh\",\n  \"invoice_date\": \"2025-01-15\",\n  \"total_amount\": 25000,\n  \"details\": [\n    {\n      \"product_name\": \"Oil Filter\",\n      \"quantity\": 2,\n      \"rate\": 500\n    },\n    {\n      \"product_name\": \"Coolant\",\n      \"quantity\": 1,\n      \"rate\": 1500\n    }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Invoices",
+          "request": {
+            "method": "GET",
+            "url": "localhost:1111/dev/v1/salesinvoice/headers/getall"
+          }
+        },
+        {
+          "name": "Get Invoice by ID",
+          "request": {
+            "method": "GET",
+            "url": "localhost:1111/dev/v1/salesinvoice/headers/get/1"
+          }
+        },
+        {
+          "name": "Update Invoice Header",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "localhost:1111/dev/v1/salesinvoice/headers/update/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_name\": \"Ramesh Kumar\",\n  \"total_amount\": 30000\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Invoice",
+          "request": {
+            "method": "DELETE",
+            "url": "localhost:1111/dev/v1/salesinvoice/headers/delete/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sales Invoice Details",
+      "item": [
+        {
+          "name": "Create Invoice Detail",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "localhost:1111/dev/v1/salesinvoicedetails/create",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sales_invoice_header_id\": 1,\n  \"product_name\": \"Brake Pad\",\n  \"quantity\": 1,\n  \"rate\": 1200\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Invoice Details",
+          "request": {
+            "method": "GET",
+            "url": "localhost:1111/dev/v1/salesinvoicedetails/getall"
+          }
+        },
+        {
+          "name": "Get Details by Header ID",
+          "request": {
+            "method": "GET",
+            "url": "localhost:1111/dev/v1/salesinvoicedetails/getbyheader/1"
+          }
+        },
+        {
+          "name": "Update Invoice Detail",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "localhost:1111/dev/v1/salesinvoicedetails/update/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3,\n  \"rate\": 600\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Invoice Detail",
+          "request": {
+            "method": "DELETE",
+            "url": "localhost:1111/dev/v1/salesinvoicedetails/delete/1"
+          }
+        }
+      ]
+    }
+  ]
+}

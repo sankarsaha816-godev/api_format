@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Service Sales CRUD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Service Sales",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"service_detail_id\": 1,\n  \"vehicle_stock_number\": \"STK-1234\",\n  \"customer_id\": 10,\n  \"salesperson_id\": 5,\n  \"provider\": \"ProviderX\",\n  \"status\": \"Active\",\n  \"net_price_ex_vat\": 500.00,\n  \"retail_price_inc_vat\": 600.00,\n  \"vat_rate\": 20.0,\n  \"vat_receipt\": \"INV-001\",\n  \"vat_amount\": 100.00,\n  \"cost_price\": 400.00,\n  \"fca_disclosure_status\": \"Disclosed\",\n  \"invoice_number\": \"INV-001\",\n  \"delivery_method\": \"Email\",\n  \"activation_code\": \"ACT123\",\n  \"fulfillment_status\": \"Complete\",\n  \"notes\": \"Initial sale entry\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/service/sales/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["service", "sales", "create"]
+        }
+      }
+    },
+    {
+      "name": "Get All Service Sales",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/service/sales/getall",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["service", "sales", "getall"]
+        }
+      }
+    },
+    {
+      "name": "Get Service Sales By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/service/sales/get/id?id=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["service", "sales", "get", "id"],
+          "query": [{ "key": "id", "value": "1" }]
+        }
+      }
+    },
+    {
+      "name": "Update Service Sales",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"service_sales_id\": 1,\n  \"status\": \"Updated\",\n  \"notes\": \"Updated sale record\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/service/sales/update",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["service", "sales", "update"]
+        }
+      }
+    },
+    {
+      "name": "Delete Service Sales",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:3000/service/sales/delete/id?id=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["service", "sales", "delete", "id"],
+          "query": [{ "key": "id", "value": "1" }]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "info": {
+    "name": "TenantUser CRUD APIs",
+    "_postman_id": "tenantuser-crud-collection",
+    "description": "CRUD operations for TenantUser with JWT middleware (superuser & normal tenant)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login - Superuser",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@domain.com\",\n  \"otp\": \"123456\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/login", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["login"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Login - Normal Tenant",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user1@tenant.com\",\n  \"otp\": \"123456\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/login", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["login"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Create TenantUser",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"windows_id\": \"johndoe\",\n  \"user_name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\",\n  \"profile_name\": \"John\",\n  \"user_type\": \"normal\",\n  \"role_id\": 2\n}"
+        },
+        "url": { "raw": "http://localhost:8080/tenant-users/create", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tenant-users", "create"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Update TenantUser",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tenant_user_id\": 1,\n  \"user_name\": \"John Updated\",\n  \"email\": \"john.updated@example.com\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/tenant-users/update", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tenant-users", "update"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Get TenantUser by ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/tenant-users/get?tenant_user_id=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["tenant-users", "get"],
+          "query": [{ "key": "tenant_user_id", "value": "1" }]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All TenantUsers",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": { "raw": "http://localhost:8080/tenant-users/all", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tenant-users", "all"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete TenantUser",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/tenant-users/delete?tenant_user_id=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["tenant-users", "delete"],
+          "query": [{ "key": "tenant_user_id", "value": "1" }]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "jwt_token", "value": "" }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "info": {
+    "name": "MySQL Connector API",
+    "_postman_id": "9b7a58b6-3b61-4e4a-bdc4-connector-demo",
+    "description": "Postman collection for Fiber + GORM MySQL connector APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Tables",
+      "item": [
+        {
+          "name": "List Tables",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tables"
+          }
+        },
+        {
+          "name": "Get Table Schema",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tables/:tableName/schema"
+          }
+        },
+        {
+          "name": "Create Table",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/tables/:tableName",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"columns\": [\n    { \"name\": \"id\", \"type\": \"INT\", \"primaryKey\": true },\n    { \"name\": \"name\", \"type\": \"VARCHAR(255)\" },\n    { \"name\": \"created_at\", \"type\": \"DATETIME\" }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Table",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/tables/:tableName"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Records",
+      "item": [
+        {
+          "name": "Get All Records",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tables/:tableName/records"
+          }
+        },
+        {
+          "name": "Get Single Record",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tables/:tableName/records/:id"
+          }
+        },
+        {
+          "name": "Insert Record",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/tables/:tableName/records",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"name\": \"Test Record\",\n  \"created_at\": \"2025-09-12 10:00:00\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Record",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/tables/:tableName/records/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Record\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Record",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/tables/:tableName/records/:id"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "localhost:1044/dev/v1/mysql"
+    }
+  ]
+}

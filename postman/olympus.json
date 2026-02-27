@@ -1,0 +1,370 @@
+{
+  "info": {
+    "name": "Google Sheets API",
+    "_postman_id": "gsheets-api-collection",
+    "description": "Postman collection for Google Sheets API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Spreadsheet-level",
+      "item": [
+        {
+          "name": "Get Spreadsheet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/gsheets/get/:spreadsheetId"
+          }
+        },
+        {
+          "name": "Batch Update Spreadsheet",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": []\n}"
+            },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/batchUpdate"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Values (Cell Data)",
+      "item": [
+        {
+          "name": "Get Values",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/values/:range"
+          }
+        },
+        {
+          "name": "Batch Get Values",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/batchGet"
+          }
+        },
+        {
+          "name": "Update Values",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"values\": [] }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/values/:range"
+          }
+        },
+        {
+          "name": "Append Values",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"values\": [] }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/values/:range/append"
+          }
+        },
+        {
+          "name": "Batch Update Values",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"data\": [], \"valueInputOption\": \"RAW\" }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/batchUpdateValues"
+          }
+        },
+        {
+          "name": "Clear Values",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/values/:range/clear"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sheet (Tab) Operations",
+      "item": [
+        {
+          "name": "Add Sheet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"properties\": { \"title\": \"New Sheet\" } }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/add-sheet"
+          }
+        },
+        {
+          "name": "Delete Sheet",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/delete-sheet/:sheetId"
+          }
+        },
+        {
+          "name": "Duplicate Sheet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/duplicate-sheet/:sheetId"
+          }
+        },
+        {
+          "name": "Update Sheet Properties",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"properties\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/update-sheet/:sheetId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dimension Operations",
+      "item": [
+        {
+          "name": "Insert Dimension",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"range\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/dimension/insert"
+          }
+        },
+        {
+          "name": "Delete Dimension",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"range\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/dimension/delete"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Named Ranges",
+      "item": [
+        {
+          "name": "Add Named Range",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"namedRange\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/namedRange"
+          }
+        },
+        {
+          "name": "Update Named Range",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"namedRange\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/namedRange/:namedRangeId"
+          }
+        },
+        {
+          "name": "Delete Named Range",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/namedRange/:namedRangeId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Protected Ranges",
+      "item": [
+        {
+          "name": "Add Protected Range",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"protectedRange\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/protectedRange"
+          }
+        },
+        {
+          "name": "Update Protected Range",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"protectedRange\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/protectedRange/:protectedRangeId"
+          }
+        },
+        {
+          "name": "Delete Protected Range",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/protectedRange/:protectedRangeId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filters",
+      "item": [
+        {
+          "name": "Add Filter View",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"filterView\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/filterView"
+          }
+        },
+        {
+          "name": "Update Filter View",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"filterView\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/filterView/:filterViewId"
+          }
+        },
+        {
+          "name": "Delete Filter View",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/filterView/:filterViewId"
+          }
+        },
+        {
+          "name": "Set Basic Filter",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"range\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/basicFilter"
+          }
+        },
+        {
+          "name": "Clear Basic Filter",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/basicFilter"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Developer Metadata",
+      "item": [
+        {
+          "name": "Search Metadata",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"dataFilters\": [] }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/developerMetadata/search"
+          }
+        },
+        {
+          "name": "Create Metadata",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"developerMetadata\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/developerMetadata/create"
+          }
+        },
+        {
+          "name": "Delete Metadata",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/developerMetadata/:metadataId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Charts & Conditional Formatting",
+      "item": [
+        {
+          "name": "Add Chart",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chart\": {\n    \"spec\": {\n      \"title\": \"My Chart\",\n      \"basicChart\": {\n        \"chartType\": \"COLUMN\",\n        \"legendPosition\": \"BOTTOM_LEGEND\",\n        \"axis\": [],\n        \"domains\": [],\n        \"series\": []\n      }\n    },\n    \"position\": { \"newSheet\": true }\n  }\n}"
+            },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/addChart"
+          }
+        },
+        {
+          "name": "Update Chart",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"chartId\": 123, \"spec\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/updateChart"
+          }
+        },
+        {
+          "name": "Delete Chart",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"chartId\": 123 }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/deleteChart"
+          }
+        },
+        {
+          "name": "Add Pivot Table",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pivotTable\": {\n    \"source\": {\"sheetId\": 0, \"startRowIndex\": 0, \"startColumnIndex\": 0, \"endRowIndex\": 10, \"endColumnIndex\": 5},\n    \"rows\": [],\n    \"columns\": [],\n    \"values\": []\n  },\n  \"anchorCell\": { \"sheetId\": 1, \"rowIndex\": 0, \"columnIndex\": 0 }\n}"
+            },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/addPivotTable"
+          }
+        },
+        {
+          "name": "Add Conditional Format Rule",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rule\": {\n    \"ranges\": [{\"sheetId\": 0, \"startRowIndex\": 0, \"endRowIndex\": 10, \"startColumnIndex\": 0, \"endColumnIndex\": 5}],\n    \"booleanRule\": {\n      \"condition\": {\"type\": \"NUMBER_GREATER\", \"values\": [{\"userEnteredValue\": \"10\"}]},\n      \"format\": {\"backgroundColor\": {\"red\": 1, \"green\": 0.9, \"blue\": 0.9}}\n    }\n  }\n}"
+            },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/addConditionalFormatRule"
+          }
+        },
+        {
+          "name": "Update Conditional Format Rule",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"index\": 0, \"rule\": {} }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/updateConditionalFormatRule"
+          }
+        },
+        {
+          "name": "Delete Conditional Format Rule",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"index\": 0 }" },
+            "url": "{{baseUrl}}/gsheets/:spreadsheetId/deleteConditionalFormatRule"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "localhost:1044/dev/v1" }
+  ]
+}

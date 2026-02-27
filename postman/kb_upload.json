@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "KnowledgeBase Excel Upload",
+    "_postman_id": "7bd41c34-1124-4e90-9c7a-a112f8a11223",
+    "description": "API to upload Excel and insert rows into knowledge_bases table",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Upload Excel ",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:1044/autodev/v1/knowledgebase/upload/exceldata",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "1044",
+          "path": ["autodev", "v1", "knowledgebase", "upload", "exceldata"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

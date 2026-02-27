@@ -1,0 +1,92 @@
+{
+  "info": {
+    "name": "Vehicle CRUD API",
+    "_postman_id": "c7e5a1f4-1d0b-47a8-b0b2-vehicle-crud",
+    "description": "Postman collection for Vehicle CRUD operations in Go Fiber with duplicate handling and Make1 copy logic.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Vehicle",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"registration_number\": \"TN09AB1234\",\n  \"make\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"description\": \"Compact sedan\",\n  \"colour\": \"White\",\n  \"mileage\": \"12000\",\n  \"fuel_type\": \"Petrol\",\n  \"year_of_manufacturing\": \"2022\",\n  \"engine_size\": \"1800cc\",\n  \"purchased_date\": \"2023-01-15\",\n  \"purchased_price\": \"15000\",\n  \"purchased_invoice_no\": \"INV-12345\",\n  \"reselling_price\": \"17000\",\n  \"purchase_type\": \"Cash\",\n  \"parts_exchange_reg_no\": \"\",\n  \"parts_exchange_stock_no\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/vehicle/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["vehicle", "create"]
+        }
+      }
+    },
+    {
+      "name": "Get All Vehicles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/vehicle/getall",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["vehicle", "getall"]
+        }
+      }
+    },
+    {
+      "name": "Get Vehicle by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/vehicle/get/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["vehicle", "get", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Vehicle",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"make\": \"Toyota\",\n  \"model\": \"Corolla Altis\",\n  \"description\": \"Updated model\",\n  \"colour\": \"Black\",\n  \"mileage\": \"12500\",\n  \"fuel_type\": \"Petrol\",\n  \"year_of_manufacturing\": \"2022\",\n  \"engine_size\": \"1800cc\",\n  \"purchased_date\": \"2023-01-15\",\n  \"purchased_price\": \"15000\",\n  \"purchased_invoice_no\": \"INV-12345\",\n  \"reselling_price\": \"17500\",\n  \"purchase_type\": \"Cash\",\n  \"parts_exchange_reg_no\": \"TN22AB9876\",\n  \"parts_exchange_stock_no\": \"STK-00045\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/vehicle/update",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["vehicle", "update"]
+        }
+      }
+    },
+    {
+      "name": "Delete Vehicle",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:1111/vehicle/delete/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["vehicle", "delete", "1"]
+        }
+      }
+    }
+  ]
+}

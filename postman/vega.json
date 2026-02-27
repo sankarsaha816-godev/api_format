@@ -1,0 +1,253 @@
+{
+  "info": {
+    "name": "Salesforce API",
+    "_postman_id": "salesforce-api-collection",
+    "description": "Postman collection for Salesforce API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Records",
+      "item": [
+        {
+          "name": "Create Record",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ }" },
+            "url": "{{baseUrl}}/salesforce/create/:object"
+          }
+        },
+        {
+          "name": "Get Record",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/get/:object/:id"
+          }
+        },
+        {
+          "name": "Update Record",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ }" },
+            "url": "{{baseUrl}}/salesforce/update/:object/:id"
+          }
+        },
+        {
+          "name": "Delete Record",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/salesforce/delete/:object/:id"
+          }
+        },
+        {
+          "name": "Query Records",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/query?soql="
+          }
+        },
+        {
+          "name": "Global Search",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/search?q="
+          }
+        },
+        {
+          "name": "Object Search",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/:object/search?q="
+          }
+        },
+        {
+          "name": "List Objects",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/objects"
+          }
+        },
+        {
+          "name": "Describe Object",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/describe/:object"
+          }
+        },
+        {
+          "name": "Composite Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ }" },
+            "url": "{{baseUrl}}/salesforce/composite"
+          }
+        },
+        {
+          "name": "SObject Tree",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ }" },
+            "url": "{{baseUrl}}/salesforce/tree/:object"
+          }
+        },
+        {
+          "name": "Create Bulk Job",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ }" },
+            "url": "{{baseUrl}}/salesforce/bulk/job"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chatter",
+      "item": [
+        {
+          "name": "Post Chatter",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ }" },
+            "url": "{{baseUrl}}/salesforce/chatter/post"
+          }
+        },
+        {
+          "name": "Get Chatter Feed",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/chatter/feed"
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Management",
+      "item": [
+        {
+          "name": "Current User",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/currentuser"
+          }
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/user/:id"
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/salesforce/user/:id/reset-password"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports & Dashboards",
+      "item": [
+        {
+          "name": "List Reports",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/reports"
+          }
+        },
+        {
+          "name": "Run Report",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/reports/:id"
+          }
+        },
+        {
+          "name": "List Dashboards",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/dashboards"
+          }
+        },
+        {
+          "name": "Get Dashboard",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/dashboards/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tooling & Apex",
+      "item": [
+        {
+          "name": "Tooling Query",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/tooling/query?soql="
+          }
+        },
+        {
+          "name": "Execute Anonymous Apex",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"apex\": \"\" }" },
+            "url": "{{baseUrl}}/salesforce/apex/execute"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "item": [
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "multipart/form-data" }],
+            "body": { "mode": "formdata", "formdata": [{ "key": "file", "type": "file" }] },
+            "url": "{{baseUrl}}/salesforce/files/upload"
+          }
+        },
+        {
+          "name": "Download File",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/files/download/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Limits & Recently Viewed",
+      "item": [
+        {
+          "name": "Get Limits",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/limits"
+          }
+        },
+        {
+          "name": "Recently Viewed",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/salesforce/recent"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "localhost:1044/dev/v1" }
+  ]
+}

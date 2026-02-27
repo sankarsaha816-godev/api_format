@@ -1,0 +1,80 @@
+{
+  "info": {
+    "name": "atlantis - Google Drive Connector",
+    "_postman_id": "d21f0b8e-atlantis-connector",
+    "description": "APIs for Google Drive (atlantis) connector - list, upload, download, and delete files.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Files",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/atlantis/files",
+          "host": ["{{base_url}}"],
+          "path": ["atlantis", "files"]
+        }
+      }
+    },
+    {
+      "name": "Get File Metadata",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/atlantis/files/:fileId",
+          "host": ["{{base_url}}"],
+          "path": ["atlantis", "files", ":fileId"]
+        }
+      }
+    },
+    {
+      "name": "Upload File",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/atlantis/files/upload",
+          "host": ["{{base_url}}"],
+          "path": ["atlantis", "files", "upload"]
+        }
+      }
+    },
+    {
+      "name": "Download File",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/atlantis/files/download/:fileId",
+          "host": ["{{base_url}}"],
+          "path": ["atlantis", "files", "download", ":fileId"]
+        }
+      }
+    },
+    {
+      "name": "Delete File",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/atlantis/files/:fileId",
+          "host": ["{{base_url}}"],
+          "path": ["atlantis", "files", ":fileId"]
+        }
+      }
+    }
+  ]
+}
